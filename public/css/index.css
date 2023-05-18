@@ -1,0 +1,200 @@
+/*== 外の線が伸びる */
+
+.general {
+    /*線の基点とするためrelativeを指定*/
+    position: relative;
+    /*ボタンの形状*/
+    color: #333;
+    font-weight: bold;
+    border: 1px solid #00B900;
+    border-width: 3px;
+    padding: 10px 30px;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+    /*アニメーションの指定*/
+    transition: all 0.3s ease-in-out;
+}
+
+/*hoverした際の背景の形状*/
+.general:hover {
+    background: #00b900;
+    color: #fff;
+    font-weight: bold;
+    border-color: transparent;
+}
+
+/*線の設定*/
+.general::before,
+.general::after {
+    content: '';
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    border: solid #00B900;
+    width: 10px;
+    height: 10px;
+    /*アニメーションの指定*/
+    transition: all 0.3s ease-in-out;
+}
+
+/*線の位置と形状*/
+.general::before {
+    top: -6px;
+    left: -6px;
+    border-width: 1px 0 0 1px;
+}
+
+/*線の位置と形状*/
+.general::after {
+    bottom: -6px;
+    right: -6px;
+    border-width: 0 1px 1px 0;
+}
+
+/*hoverした際の線の形状*/
+.general:hover::before,
+.general:hover::after {
+    width: calc(100% + 11px);
+    height: calc(100% + 11px);
+    border-color: #00B900;
+    border-width: 3px;
+}
+
+/*-------------------------------------------------------------------------------------*/
+.admin {
+    /*線の基点とするためrelativeを指定*/
+    position: relative;
+    /*ボタンの形状*/
+    color: #333;
+    border: 1px solid #00B900;
+    font-weight: bold;
+    border-width: 3px;
+    padding: 10px 30px;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+    /*アニメーションの指定*/
+    transition: all 0.3s ease-in-out;
+}
+
+/*hoverした際の背景の形状*/
+.admin:hover {
+    background: #00b900;
+    font-weight: bold;
+    color: #fff;
+    border-color: transparent;
+}
+
+/*線の設定*/
+.admin::before,
+.admin::after {
+    content: '';
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    border: solid #00B900;
+    width: 10px;
+    height: 10px;
+    /*アニメーションの指定*/
+    transition: all 0.3s ease-in-out;
+}
+
+/*線の位置と形状*/
+.admin::before {
+    top: -6px;
+    left: -6px;
+    border-width: 1px 0 0 1px;
+}
+
+/*線の位置と形状*/
+.admin::after {
+    bottom: -6px;
+    right: -6px;
+    border-width: 0 1px 1px 0;
+}
+
+/*hoverした際の線の形状*/
+.admin:hover::before,
+.admin:hover::after {
+    width: calc(100% + 11px);
+    height: calc(100% + 11px);
+    border-color: #00B900;
+    border-width: 3px;
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+
+
+.type {
+    padding: 30px 10%;
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
+
+.explanation {
+    width: 60%;
+    margin: 50px auto;
+    font-weight: bold;
+    background-color: #00B900;
+    /* LINEの特徴的な緑色 */
+    color: white;
+    /* テキストを白色に */
+    padding: 10px 20px;
+    /* 内側のスペースを与える */
+    border-radius: 10px;
+    /* 角を丸く */
+}
+
+body {
+    background-color: #f0f0f0;
+    /* 背景を少し暗めのグレーに */
+    color: #333;
+    /* テキスト色を暗めに */
+    font-family: Arial, sans-serif;
+    /* フォントを指定 */
+}
+
+.cook_mam {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0 0 10%;
+}
+
+.mam_text {
+    width: 30%;
+    height: auto;
+    font-weight: bold;
+    background-color: #00B900;
+    /* LINEの特徴的な緑色 */
+    color: white;
+    /* テキストを白色に */
+    padding: 10px 20px;
+    /* 内側のスペースを与える */
+    border-radius: 10px;
+    /* 角を丸く */
+}
+
+.mam {
+    max-width: 100%;
+    /* 画像が親要素をはみ出さないように */
+    height: auto;
+    /* 画像の高さを自動に */
+}
+
+@media (min-width: 897px) {
+    .mam_text {
+        margin-top: -100px;
+    }
+}
+
+@media (max-width: 896px) {
+    .mam_text p {
+        height: 200px;
+        writing-mode: vertical-rl;
+    }
+
+    .mam_text {
+        margin-top: -30px;
+    }
+}

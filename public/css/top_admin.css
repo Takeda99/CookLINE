@@ -1,0 +1,41 @@
+@import url('/css/reset.css');
+
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background-color: #E5E5E5;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+}
+
+.admin-heading {
+    text-align: center;
+    margin-top: 50px;
+    color: #333;
+}
+
+.admin-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.admin-link {
+    background-color: #00C300;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    width: 200px;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.admin-link:hover {
+    background-color: #009900;
+}

@@ -1,0 +1,48 @@
+.header1 {
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: solid;
+    border-color: #00B900;
+    padding: 0 10px;
+}
+
+.header1 h1 {
+    margin: 0;
+    margin-left: -66px;
+}
+
+.logo {
+    height: 120px;
+    width: auto;
+}
+
+.logout {
+    margin-top: 70px;
+    height: 30px;
+
+}
+
+button {
+    background-color: #00B900;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+}
+
+@media (max-width: 896px) {
+    .logout {
+        height: 30px;
+        padding: 0 0 2px 0;
+    }
+
+    button {
+        width: 120%;
+    }
+
+    .header1 h1 {
+        margin-left: -50px;
+    }
+
+}

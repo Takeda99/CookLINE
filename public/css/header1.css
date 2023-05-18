@@ -1,0 +1,18 @@
+@import url('/css/reset.css');
+
+.header1 {
+    height: 120px;
+    display: flex;
+    justify-content: start;
+    border: solid;
+    border-color: #00B900;
+}
+
+.header1 h1 {
+    line-height: calc(120px - 40px);
+}
+
+.logo {
+    height: 120px;
+    width: auto;
+}
