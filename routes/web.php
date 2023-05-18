@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\LineBotController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
-Auth::routes();
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +21,12 @@ Auth::routes();
 #Route::get('/', function () {
 #    return view('welcome');
 #});
-
+//パスワード再設定一般
+Route::get('/mail1', [UsersController::class, 'mail1'])->name('mail1');
+Route::post('/mail1_2', [UsersController::class, 'mail1_2'])->name('mail1_2');
+Route::post('/mail1_3', [UsersController::class, 'mail1_3'])->name('mail1_3');
+    //再設定error
+    Route::post('/mail_error', [UsersController::class, 'mail_error'])->name('mail_error');
 //メインメニュー
 Route::get('/', [UsersController::class, 'index'])->name('index');
 Route::get('/index', [UsersController::class, 'index'])->name('index');
@@ -34,7 +41,7 @@ Route::get('/top0', function () {
 })->middleware('check_admin');
 //新規アカウント作成(一般)
 Route::get('/new1', [UsersController::class, 'new1'])->name('new1');
-Route::post('/registerx', [UsersController::class, 'store']);
+Route::post('/register', [UsersController::class, 'store']);
 //新規アカウント作成(管理者)
 Route::get('/new2', [UsersController::class, 'new2'])->name('new2');
 Route::post('/register2', [UsersController::class, 'store2']);
@@ -42,7 +49,7 @@ Route::post('/register2', [UsersController::class, 'store2']);
 Route::get('/newline', [LoginController::class, 'redirectToLine']);
 Route::get('/top1', [LoginController::class, 'handleLineCallback']);
 //ログイン一般
-Route::post('/login_main', [LoginController::class, 'authenticate'])->name('login_main');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login_main');
 //ログイン管理者
 Route::post('/login2', [LoginController::class, 'authenticate2'])->name('login_sub');
 //ログアウト
@@ -68,9 +75,7 @@ Route::get('/admin_list', [UsersController::class, 'admin_list'])->name('admin_l
 Route::get('/top_admin', [UsersController::class, 'admin'])->name('top_admin')->middleware('is_admin');
 //新たなレシピの追加
 Route::get('/new_recipe', [UsersController::class, 'new_recipe'])->name('new_recipe')->middleware('check_admin');
+//webhook
+Route::post('/line/webhook/message', [App\Http\Controllers\LineBotController::class, 'webhook'])->name('line.webhook.message');
 
 
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

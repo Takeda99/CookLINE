@@ -62,7 +62,7 @@ class LoginController extends Controller
 
         // If unauthenticated, redirect back with an error message.
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'mailかpasswordに間違いがあります',
         ]);
     }
     //ログイン管理者
@@ -78,7 +78,7 @@ class LoginController extends Controller
 
         // If unauthenticated, redirect back with an error message.
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'mailかpasswordに間違いがあります',
         ]);
     }
 

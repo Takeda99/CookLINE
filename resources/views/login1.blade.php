@@ -11,6 +11,20 @@
     @include('common.header1')
 </header>
 <body>
+<div>
+    @isset($email)
+        <p>Email: {{ $email }}</p>
+    @endisset
+
+    @isset($password3)
+        <p>Password3: {{ $password3 }}</p>
+    @endisset
+
+    @isset($password4)
+        <p>Password4: {{ $password4 }}</p>
+    @endisset
+</div>
+
     <div class="login">
     <h1>一般ログイン</h1>
 
@@ -38,8 +52,8 @@
 
     </div>
     <div class="a">
-        <a  href="{{ route('new1') }}">新規登録はこちら<br></a>
-        <a href="#">パスワードを忘れた方はこちら</a>
+        <a href="{{ route('new1') }}">新規登録はこちら<br></a>
+        <a href="{{ route('mail1') }}">パスワードを忘れた方はこちら</a>
     </div>
 </body>
 </html>

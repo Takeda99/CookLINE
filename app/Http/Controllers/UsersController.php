@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Recipe;
 use App\Models\Log;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ResetCodeMail;
+
 
 class UsersController extends Controller
 {
@@ -44,7 +47,69 @@ class UsersController extends Controller
     }public function recipe_update_complete(){
         return view('recipe_update_complete');
     }
+    //パスワード再設定
+    public function mail1(){
+        return view('mail1');
+    }
+    public function mail1_2(Request $request){
+        // フォームの入力メールアドレスを取得
+        $email = $request->input('email');
+        // 4桁のランダムな数字を生成
+        $code = sprintf("%04d", mt_rand(0, 9999));
 
+        // usersテーブルの該当するemailのレコードを取得する
+        $user = User::where('email', $email)->first();
+
+        if ($user) {
+            // 該当するユーザーが存在する場合はresetカラムに$codeの値を保存して保存処理を行う
+            $user->reset = $code;
+            $user->save();
+
+            // メール送信
+            Mail::to($email)->send(new ResetCodeMail($code));
+        }else{
+            return view('mail_error');
+        }
+
+        return view('mail1_2');
+    }
+    //パスワード再登録失敗ページ
+    public function mail_error(){
+        return view('mail_error');
+    }
+    //パスワード再登録
+    public function mail1_3(Request $request)
+    {
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $password2 = $request->input('password2');
+        $password3 = $request->input('password3');
+
+        // emailカラムが一致するユーザーを取得
+        $user = User::where('email', $email)->first();
+        $password4 = $user->reset;
+
+        if ($user) {
+            // resetカラムの値と受け取ったpassword3の値が一致するか確認
+            if ($password4 == $password3) {
+                if ($password == $password2) {
+                    // パスワードをハッシュ化して保存
+                    $user->password = Hash::make($password);
+                    $user->save();
+    
+                    return view('mail1_3');
+                } else {
+                    return view('index');
+                    //->with('email', $email)->with('password3', $password3);
+                }
+            } else {
+                return view('index');
+                //->with('email', $email)->with('password3', $password3)->with('password4', $password4);
+            }
+        } else {
+            return view('index');//indexのところは変更失敗なので変更失敗ページを作りはじめからやり直させる
+        }
+    }
     //新規レシピ登録
     public function recipe_complete(Request $request){
 

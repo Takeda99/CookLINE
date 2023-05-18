@@ -22,7 +22,7 @@ body {
 }
 
 .recipe {
-    height: 110px;
+    min-height: 110px;
     margin-bottom: 20px;
     padding: 10px;
     background-color: #fff;

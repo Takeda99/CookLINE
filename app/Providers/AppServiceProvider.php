@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Providers;
-
+//テスト用↓
+use Illuminate\Support\Facades\URL;
+//テスト用↑
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //テスト用↓
+        #URL::forceScheme('https');
+        //テスト用↑
     }
 }

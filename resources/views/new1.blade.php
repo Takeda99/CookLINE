@@ -13,7 +13,7 @@
 <body>
     <div class="login">
         <h1>新規アカウント作成</h1><h1>(一般)</h1>
-        <form method="POST" action="/registerx">
+        <form method="POST" action="/register">
         @csrf
             <div class="form-group">
                 <label for="email">メールアドレス入力<br></label>
@@ -24,9 +24,9 @@
                 <input type="password" id="password" name="password" placeholder="パスワードを入力してください" required>
             </div>
             <div class="form-group">
-            <label for="password">パスワード再入力<br></label>
-            <input type="password" id="password2" name="password_confirmation" placeholder="パスワードを再入力してください" required>
-        </div>
+                <label for="password">パスワード再入力<br></label>
+                <input type="password" id="password2" name="password_confirmation" placeholder="パスワードを再入力してください" required>
+            </div>
         <button type="submit">次へ</button>
         </form>
     </div>

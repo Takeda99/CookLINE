@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,6 +13,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     public $timestamps = false;
+    protected $table = 'users';
     protected $primaryKey = 'user_id';
 
 
@@ -48,6 +50,11 @@ class User extends Authenticatable
     public function recipes()
     {
         return $this->hasMany(Recipe::class, 'user_id');
+    }
+
+    public function logs()
+    {
+        return $this->hasMany(log::class, 'user_id');
     }
 
     

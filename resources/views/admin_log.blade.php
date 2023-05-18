@@ -19,7 +19,11 @@
     @foreach ($logs as $log)
         <div class="log">
             <div class="log-item">
-                <p class="log-email">{{ $log->user->email }}</p>
+                @if($log->user)
+                    <p class="log-email">{{ $log->user->email }}</p>
+                @else
+                    <p class="log-email">削除されたユーザー</p>
+                @endif
                 <p class="log-action">{{ $log->action->action_name }}</p>
                 <p class="log-time">{{ $log->time_at }}</p>
             </div>

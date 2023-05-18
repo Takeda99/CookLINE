@@ -37,7 +37,7 @@
     </div>
     <div class="a">
         <a href="{{ route('new2') }}">新規登録はこちら<br></a>
-        <a href="#">パスワードを忘れた方はこちら</a>
+        <a href="{{ route('mail1') }}">パスワードを忘れた方はこちら</a>
     </div>
 </body>
 </html>
